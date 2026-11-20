@@ -1,0 +1,1502 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>失效地址7086 - 品牌档案,影像记录与线索追踪</title>
+<meta name="description" content="失效地址7086官方网站，一个以失效地址7086为主题的影像记录与线索追踪品牌，围绕城市变迁、旧地址档案与创作者社区持续运营。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2318202b'/%3E%3Cpath d='M14 44 L32 14 L50 44 Z' fill='none' stroke='%23ff5a3c' stroke-width='4' stroke-linejoin='round'/%3E%3Ccircle cx='32' cy='34' r='5' fill='%23ff5a3c'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --addr-ink:#18202b;
+    --addr-ink-2:#2a3546;
+    --addr-paper:#f3f1ec;
+    --addr-paper-2:#e8e5dd;
+    --addr-line:#c9c4b8;
+    --addr-accent:#ff5a3c;
+    --addr-accent-2:#f2b73c;
+    --addr-teal:#1c8f80;
+    --addr-muted:#6e6a61;
+    --addr-white:#ffffff;
+    --addr-shadow:0 10px 30px rgba(24,32,43,.12);
+    --addr-radius:14px;
+    --addr-sticky:108px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--addr-sticky);}
+  body{
+    margin:0;
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Han Sans SC",sans-serif;
+    background:var(--addr-paper);
+    color:var(--addr-ink);
+    line-height:1.75;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;}
+  h1,h2,h3,h4{margin:0;line-height:1.3;font-weight:800;letter-spacing:.5px;}
+  p{margin:0 0 1em;}
+  ul{margin:0;padding:0;list-style:none;}
+
+  .addr-stickywrap{
+    position:sticky;top:0;z-index:90;
+  }
+  /* 公告条 */
+  .addr-announce{
+    background:linear-gradient(90deg,var(--addr-ink) 0%,var(--addr-ink-2) 60%,#3a4a60 100%);
+    color:#e9e6df;
+    font-size:13.5px;
+    padding:8px 20px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    overflow:hidden;
+  }
+  .addr-announce__badge{
+    flex:none;background:var(--addr-accent);color:#fff;
+    font-size:12px;font-weight:700;padding:2px 9px;border-radius:20px;letter-spacing:1px;
+  }
+  .addr-announce__track{
+    position:relative;flex:1;overflow:hidden;height:22px;
+  }
+  .addr-announce__item{
+    position:absolute;inset:0;display:flex;align-items:center;gap:10px;
+    opacity:0;transform:translateY(120%);transition:all .5s ease;white-space:nowrap;
+  }
+  .addr-announce__item.is-on{opacity:1;transform:translateY(0);}
+  .addr-announce__item b{color:var(--addr-accent-2);font-weight:700;}
+  .addr-announce__more{flex:none;color:#ffd9cf;font-size:12.5px;border-bottom:1px dashed #ff9c85;}
+
+  /* 页头 */
+  .addr-header{
+    background:rgba(243,241,236,.94);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--addr-line);
+    padding:0 20px;
+  }
+  .addr-header__in{
+    max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:22px;height:66px;
+  }
+  .addr-brand{display:flex;align-items:center;gap:11px;flex:none;}
+  .addr-brand__mark{
+    width:38px;height:38px;border-radius:10px;background:var(--addr-ink);
+    display:grid;place-items:center;flex:none;
+  }
+  .addr-brand__mark svg{width:24px;height:24px;}
+  .addr-brand__txt b{display:block;font-size:16.5px;letter-spacing:1px;line-height:1.2;}
+  .addr-brand__txt span{display:block;font-size:10.5px;color:var(--addr-muted);letter-spacing:2.5px;text-transform:uppercase;}
+  .addr-nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap;}
+  .addr-nav a{
+    font-size:14.5px;padding:6px 13px;border-radius:20px;color:var(--addr-ink-2);
+    transition:.2s;font-weight:600;
+  }
+  .addr-nav a:hover{background:var(--addr-ink);color:#fff;}
+  .addr-search{
+    display:flex;align-items:center;gap:0;flex:none;
+    border:1.5px solid var(--addr-line);border-radius:24px;overflow:hidden;background:#fff;
+  }
+  .addr-search input{
+    border:0;outline:0;padding:8px 12px;font-size:13.5px;width:150px;background:transparent;color:var(--addr-ink);
+  }
+  .addr-search button{
+    border:0;background:var(--addr-accent);color:#fff;padding:8px 14px;font-size:13.5px;font-weight:700;
+  }
+  .addr-search button:hover{background:#e44a2c;}
+  .addr-burger{
+    display:none;border:1.5px solid var(--addr-line);background:#fff;border-radius:9px;
+    width:40px;height:38px;flex:none;align-items:center;justify-content:center;
+  }
+  .addr-burger span{display:block;width:18px;height:2px;background:var(--addr-ink);position:relative;}
+  .addr-burger span::before,.addr-burger span::after{
+    content:"";position:absolute;left:0;width:18px;height:2px;background:var(--addr-ink);
+  }
+  .addr-burger span::before{top:-6px;}
+  .addr-burger span::after{top:6px;}
+  .addr-searchback{
+    display:none;font-size:12.5px;padding:6px 14px;background:#fff3ef;color:#b93a20;
+    border:1px solid #ffc6b7;border-radius:8px;margin:0 20px 0;
+  }
+  .addr-searchback.is-on{display:block;}
+
+  .addr-main{max-width:1200px;margin:0 auto;padding:0 20px;}
+
+  /* 首屏 */
+  .addr-hero{
+    padding:52px 0 44px;
+    display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;
+  }
+  .addr-hero__eyebrow{
+    display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--addr-line);
+    border-radius:20px;padding:3px 14px;font-size:12.5px;font-weight:700;color:var(--addr-ink-2);
+    letter-spacing:1px;margin-bottom:18px;
+  }
+  .addr-hero__eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--addr-teal);display:block;}
+  .addr-hero h1{
+    font-size:clamp(34px,5vw,56px);letter-spacing:2px;line-height:1.12;margin-bottom:16px;
+  }
+  .addr-hero h1 em{
+    font-style:normal;color:transparent;
+    background:linear-gradient(100deg,var(--addr-accent),var(--addr-accent-2));
+    -webkit-background-clip:text;background-clip:text;
+  }
+  .addr-hero__lead{font-size:16px;color:var(--addr-ink-2);max-width:520px;}
+  .addr-hero__btns{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 30px;}
+  .addr-btn{
+    display:inline-flex;align-items:center;gap:8px;border-radius:26px;padding:11px 24px;
+    font-size:14.5px;font-weight:700;border:1.5px solid transparent;transition:.2s;
+  }
+  .addr-btn--solid{background:var(--addr-ink);color:#fff;}
+  .addr-btn--solid:hover{background:var(--addr-accent);transform:translateY(-2px);box-shadow:var(--addr-shadow);}
+  .addr-btn--ghost{background:#fff;border-color:var(--addr-line);color:var(--addr-ink);}
+  .addr-btn--ghost:hover{border-color:var(--addr-ink);}
+  .addr-stats{display:flex;gap:30px;flex-wrap:wrap;}
+  .addr-stats__item b{font-size:26px;letter-spacing:1px;display:block;line-height:1.1;}
+  .addr-stats__item span{font-size:12.5px;color:var(--addr-muted);}
+  .addr-hero__visual{position:relative;}
+  .addr-hero__frame{
+    border-radius:20px;overflow:hidden;box-shadow:var(--addr-shadow);border:1px solid var(--addr-line);
+    background:#fff;
+  }
+  .addr-hero__frame svg{width:100%;height:auto;display:block;}
+  .addr-hero__pin{
+    position:absolute;left:-14px;bottom:30px;background:#fff;border:1px solid var(--addr-line);
+    border-radius:12px;padding:10px 15px;box-shadow:var(--addr-shadow);font-size:12.5px;line-height:1.45;
+  }
+  .addr-hero__pin b{display:block;font-size:16px;color:var(--addr-accent);}
+
+  /* 通用 section 标题 */
+  .addr-sec{padding:56px 0;scroll-margin-top:var(--addr-sticky);}
+  .addr-sec--alt{background:var(--addr-paper-2);}
+  .addr-sec--dark{background:var(--addr-ink);color:#e9e6df;}
+  .addr-sechead{
+    display:flex;align-items:flex-end;justify-content:space-between;gap:20px;
+    margin-bottom:32px;flex-wrap:wrap;
+  }
+  .addr-sechead h2{font-size:clamp(24px,3.2vw,34px);letter-spacing:1px;}
+  .addr-sechead p{color:var(--addr-muted);font-size:14px;margin:6px 0 0;}
+  .addr-sec--dark .addr-sechead p{color:#9aa7b8;}
+  .addr-sechead__tag{
+    font-size:12px;font-weight:700;letter-spacing:2px;color:var(--addr-accent);
+    border:1px solid currentColor;border-radius:16px;padding:3px 12px;align-self:center;
+  }
+
+  /* 深度介绍 */
+  .addr-intro{
+    background:#fff;border:1px solid var(--addr-line);border-radius:var(--addr-radius);
+    padding:34px 38px;box-shadow:0 4px 16px rgba(24,32,43,.05);
+  }
+  .addr-intro h2{font-size:clamp(23px,3vw,31px);margin-bottom:8px;}
+  .addr-intro__sub{color:var(--addr-muted);font-size:14px;margin-bottom:22px;}
+  .addr-intro p{font-size:15.4px;color:var(--addr-ink-2);text-align:justify;}
+  .addr-intro__cols{
+    display:grid;grid-template-columns:1fr 1fr;gap:0 34px;
+  }
+  .addr-intro blockquote{
+    margin:24px 0 0;border-left:4px solid var(--addr-accent);padding:8px 0 8px 18px;
+    background:#fff6f3;border-radius:0 8px 8px 0;color:#8a3a25;font-size:14.5px;font-weight:600;
+  }
+
+  /* 焦点视频 */
+  .addr-focus{display:grid;grid-template-columns:1.4fr 1fr;gap:22px;}
+  .addr-vcard{
+    background:#fff;border:1px solid var(--addr-line);border-radius:var(--addr-radius);
+    overflow:hidden;transition:.25s;display:flex;flex-direction:column;
+  }
+  .addr-vcard:hover{transform:translateY(-5px);box-shadow:var(--addr-shadow);border-color:#b8b2a4;}
+  .addr-vcard__thumb{position:relative;overflow:hidden;background:#dfdcd4;}
+  .addr-vcard__thumb svg{width:100%;height:auto;display:block;transition:.4s;}
+  .addr-vcard:hover .addr-vcard__thumb svg{transform:scale(1.04);}
+  .addr-vcard__label{
+    position:absolute;left:12px;top:12px;background:rgba(24,32,43,.82);color:#fff;
+    font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:5px;letter-spacing:1px;
+  }
+  .addr-vcard__play{
+    position:absolute;right:12px;bottom:12px;width:38px;height:38px;border-radius:50%;
+    background:rgba(255,90,60,.92);display:grid;place-items:center;
+  }
+  .addr-vcard__play::after{
+    content:"";border-left:12px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;
+    margin-left:3px;
+  }
+  .addr-vcard__body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1;}
+  .addr-vcard__body h3{font-size:17px;margin-bottom:7px;}
+  .addr-vcard__body p{font-size:13.4px;color:var(--addr-muted);margin-bottom:12px;flex:1;}
+  .addr-vcard__meta{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--addr-muted);flex-wrap:wrap;}
+  .addr-vcard__who{display:flex;align-items:center;gap:7px;font-weight:700;color:var(--addr-ink-2);}
+  .addr-ava{
+    width:24px;height:24px;border-radius:50%;display:grid;place-items:center;
+    font-size:11.5px;font-weight:800;color:#fff;flex:none;
+  }
+  .addr-vcard__tags{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;}
+  .addr-chip{
+    font-size:11px;background:#f0eee8;color:#6b6558;border-radius:20px;padding:2px 9px;
+  }
+  .addr-vcard__acts{display:flex;gap:8px;margin-top:14px;}
+  .addr-act{
+    border:1px solid var(--addr-line);background:#faf9f6;border-radius:8px;padding:4px 11px;
+    font-size:12.5px;color:var(--addr-ink-2);display:inline-flex;align-items:center;gap:5px;transition:.2s;
+  }
+  .addr-act:hover{border-color:var(--addr-accent);color:var(--addr-accent);}
+  .addr-act.is-liked{background:#fff0ec;border-color:var(--addr-accent);color:var(--addr-accent);font-weight:700;}
+  .addr-act.is-saved{background:#fff8e8;border-color:var(--addr-accent-2);color:#a77400;font-weight:700;}
+
+  /* 视频流网格 */
+  .addr-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .addr-flow .addr-vcard__body h3{font-size:15.4px;}
+
+  /* 专题 */
+  .addr-topics{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .addr-topic{
+    background:#fff;border:1px solid var(--addr-line);border-radius:var(--addr-radius);
+    padding:24px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden;transition:.25s;
+  }
+  .addr-topic::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--addr-accent);
+  }
+  .addr-topic:nth-child(2)::before{background:var(--addr-teal);}
+  .addr-topic:nth-child(3)::before{background:var(--addr-accent-2);}
+  .addr-topic:hover{transform:translateY(-4px);box-shadow:var(--addr-shadow);}
+  .addr-topic h3{font-size:18px;}
+  .addr-topic p{font-size:13.5px;color:var(--addr-muted);margin:0;flex:1;}
+  .addr-topic__state{
+    font-size:12px;font-weight:700;color:var(--addr-teal);display:flex;align-items:center;gap:6px;
+  }
+  .addr-topic__state i{width:7px;height:7px;border-radius:50%;background:var(--addr-teal);display:block;animation:addrPulse 1.6s infinite;}
+  @keyframes addrPulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+  /* 创作者 */
+  .addr-creators{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .addr-creator{
+    background:#fff;border:1px solid var(--addr-line);border-radius:var(--addr-radius);
+    padding:24px 20px;text-align:center;transition:.25s;
+  }
+  .addr-creator:hover{transform:translateY(-4px);box-shadow:var(--addr-shadow);}
+  .addr-creator__ava{
+    width:66px;height:66px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;
+    font-size:24px;font-weight:800;color:#fff;
+  }
+  .addr-creator h3{font-size:16.5px;margin-bottom:4px;}
+  .addr-creator__field{font-size:12.5px;color:var(--addr-accent);font-weight:700;margin-bottom:10px;}
+  .addr-creator p{font-size:12.8px;color:var(--addr-muted);margin-bottom:12px;min-height:56px;}
+  .addr-creator__nums{display:flex;justify-content:center;gap:18px;font-size:12px;color:var(--addr-muted);border-top:1px dashed var(--addr-line);padding-top:12px;}
+  .addr-creator__nums b{display:block;color:var(--addr-ink);font-size:14.5px;}
+
+  /* 作品墙 */
+  .addr-wall{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:14px;}
+  .addr-wall__item{
+    position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--addr-line);
+    background:#fff;transition:.25s;
+  }
+  .addr-wall__item:hover{transform:scale(1.02);box-shadow:var(--addr-shadow);}
+  .addr-wall__item svg{width:100%;height:100%;object-fit:cover;display:block;}
+  .addr-wall__item--big{grid-column:span 2;grid-row:span 2;}
+  .addr-wall__item--tall{grid-row:span 2;}
+  .addr-wall__cap{
+    position:absolute;left:0;right:0;bottom:0;padding:22px 12px 9px;color:#fff;font-size:12.5px;font-weight:700;
+    background:linear-gradient(transparent,rgba(24,32,43,.85));
+  }
+
+  /* 评价 */
+  .addr-quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .addr-quote{
+    background:#fff;border:1px solid var(--addr-line);border-radius:var(--addr-radius);
+    padding:22px;display:flex;flex-direction:column;gap:12px;
+  }
+  .addr-quote p{font-size:13.8px;margin:0;color:var(--addr-ink-2);}
+  .addr-quote__who{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--addr-muted);}
+  .addr-quote__who b{color:var(--addr-ink);}
+  .addr-stars{color:var(--addr-accent-2);font-size:13px;letter-spacing:2px;}
+
+  /* 深度解析/故事区 */
+  .addr-story{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .addr-story__item{
+    background:#fff;border:1px solid var(--addr-line);border-radius:var(--addr-radius);
+    padding:26px 28px;
+  }
+  .addr-story__item h3{font-size:18px;margin-bottom:10px;}
+  .addr-story__item p{font-size:14px;color:var(--addr-ink-2);margin:0;}
+  .addr-story__no{
+    display:inline-block;font-size:12px;font-weight:800;color:var(--addr-accent);
+    letter-spacing:2px;margin-bottom:8px;
+  }
+
+  /* 动态与更新 */
+  .addr-updates{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .addr-update{
+    display:flex;gap:14px;background:#fff;border:1px solid var(--addr-line);
+    border-radius:12px;padding:16px 18px;align-items:flex-start;
+  }
+  .addr-update__date{
+    flex:none;font-size:12px;font-weight:800;color:#fff;background:var(--addr-ink);
+    border-radius:8px;padding:6px 9px;text-align:center;line-height:1.3;min-width:56px;
+  }
+  .addr-update__date span{display:block;font-size:10px;font-weight:500;opacity:.75;}
+  .addr-update h3{font-size:15px;margin-bottom:2px;}
+  .addr-update p{font-size:12.8px;color:var(--addr-muted);margin:0;}
+
+  /* 合作品牌 */
+  .addr-partners{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+  .addr-partner{
+    background:#fff;border:1px dashed var(--addr-line);border-radius:10px;padding:20px 10px;
+    text-align:center;font-size:13px;font-weight:700;color:#7a7568;transition:.2s;
+  }
+  .addr-partner:hover{border-style:solid;color:var(--addr-ink);background:#fdfcf9;}
+
+  /* FAQ */
+  .addr-faq{max-width:880px;margin:0 auto;}
+  .addr-faq details{
+    background:#fff;border:1px solid var(--addr-line);border-radius:12px;
+    margin-bottom:12px;overflow:hidden;
+  }
+  .addr-faq summary{
+    padding:16px 20px;font-size:15px;font-weight:700;cursor:pointer;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;gap:14px;
+  }
+  .addr-faq summary::-webkit-details-marker{display:none;}
+  .addr-faq summary::after{
+    content:"+";font-size:20px;font-weight:400;color:var(--addr-accent);transition:.2s;
+  }
+  .addr-faq details[open] summary::after{transform:rotate(45deg);}
+  .addr-faq details p{margin:0;padding:0 20px 18px;font-size:14px;color:var(--addr-muted);}
+
+  /* 联系/投稿 */
+  .addr-contact{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center;}
+  .addr-contact h2{font-size:clamp(23px,3vw,32px);margin-bottom:10px;}
+  .addr-contact p{font-size:14.5px;color:#9aa7b8;}
+  .addr-contact__info{display:flex;flex-direction:column;gap:10px;margin-top:18px;font-size:14px;}
+  .addr-contact__info span{color:var(--addr-accent-2);font-weight:700;margin-right:8px;}
+  .addr-contact__box{
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+    border-radius:var(--addr-radius);padding:26px;
+  }
+  .addr-contact__box h3{font-size:17px;margin-bottom:8px;color:#fff;}
+  .addr-contact__box p{font-size:13.5px;margin-bottom:16px;}
+  .addr-contact__box input{
+    width:100%;padding:11px 14px;border-radius:9px;border:1px solid rgba(255,255,255,.2);
+    background:rgba(255,255,255,.08);color:#fff;font-size:14px;outline:0;margin-bottom:10px;
+  }
+  .addr-contact__box input::placeholder{color:#8894a6;}
+  .addr-contact__box input:focus{border-color:var(--addr-accent);}
+  .addr-contact__box .addr-btn--solid{background:var(--addr-accent);width:100%;justify-content:center;}
+  .addr-contact__box .addr-btn--solid:hover{background:#e44a2c;}
+
+  /* 页脚 */
+  .addr-footer{background:#111823;color:#8e99a8;padding:44px 20px 26px;font-size:13px;}
+  .addr-footer__in{max-width:1200px;margin:0 auto;}
+  .addr-footer__top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px;margin-bottom:30px;}
+  .addr-footer h4{color:#e3e6ea;font-size:14px;margin-bottom:12px;letter-spacing:1px;}
+  .addr-footer li{margin-bottom:7px;}
+  .addr-footer a:hover{color:var(--addr-accent-2);}
+  .addr-footer__brand b{color:#fff;font-size:16px;display:block;margin-bottom:8px;letter-spacing:1px;}
+  .addr-footer__brand p{font-size:12.5px;line-height:1.7;max-width:300px;}
+  .addr-footer__bar{
+    border-top:1px solid #232d3b;padding-top:18px;display:flex;justify-content:space-between;
+    gap:14px;flex-wrap:wrap;font-size:12px;color:#6b7686;
+  }
+
+  /* 回到顶部 */
+  .addr-top{
+    position:fixed;right:22px;bottom:24px;width:46px;height:46px;border-radius:50%;
+    background:var(--addr-ink);color:#fff;border:0;display:grid;place-items:center;
+    box-shadow:var(--addr-shadow);opacity:0;pointer-events:none;transition:.3s;z-index:80;
+  }
+  .addr-top.is-on{opacity:1;pointer-events:auto;}
+  .addr-top:hover{background:var(--addr-accent);}
+  .addr-top::before{content:"";border-bottom:9px solid #fff;border-left:7px solid transparent;border-right:7px solid transparent;}
+
+  /* toast */
+  .addr-toast{
+    position:fixed;left:50%;bottom:38px;transform:translate(-50%,20px);
+    background:var(--addr-ink);color:#fff;font-size:13.5px;padding:11px 22px;border-radius:10px;
+    opacity:0;pointer-events:none;transition:.3s;z-index:120;box-shadow:var(--addr-shadow);max-width:88vw;
+  }
+  .addr-toast.is-on{opacity:1;transform:translate(-50%,0);}
+
+  /* 弹窗 */
+  .addr-modal{
+    position:fixed;inset:0;background:rgba(17,24,35,.62);display:none;place-items:center;z-index:110;padding:20px;
+  }
+  .addr-modal.is-on{display:grid;}
+  .addr-modal__box{
+    background:var(--addr-paper);border-radius:16px;max-width:460px;width:100%;padding:28px;
+    box-shadow:0 30px 60px rgba(0,0,0,.3);max-height:86vh;overflow:auto;
+  }
+  .addr-modal__box h3{font-size:19px;margin-bottom:8px;}
+  .addr-modal__box p{font-size:14px;color:var(--addr-muted);}
+  .addr-modal__box textarea{
+    width:100%;min-height:90px;border-radius:9px;border:1px solid var(--addr-line);padding:11px;
+    font-family:inherit;font-size:13.5px;resize:vertical;outline:0;margin-bottom:12px;
+  }
+  .addr-modal__close{
+    float:right;background:none;border:0;font-size:22px;color:var(--addr-muted);line-height:1;
+  }
+  .addr-modal__acts{display:flex;gap:10px;justify-content:flex-end;}
+  .addr-share{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;}
+  .addr-share button{
+    border:1px solid var(--addr-line);background:#fff;border-radius:9px;padding:9px 16px;font-size:13px;
+  }
+  .addr-share button:hover{border-color:var(--addr-accent);color:var(--addr-accent);}
+
+  @media(max-width:1024px){
+    .addr-flow{grid-template-columns:repeat(2,1fr);}
+    .addr-creators{grid-template-columns:repeat(2,1fr);}
+    .addr-topics{grid-template-columns:1fr 1fr;}
+    .addr-partners{grid-template-columns:repeat(3,1fr);}
+    .addr-footer__top{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:860px){
+    .addr-nav{
+      display:none;position:absolute;left:0;right:0;top:100%;background:var(--addr-paper);
+      border-bottom:1px solid var(--addr-line);flex-direction:column;padding:12px 20px 18px;
+      box-shadow:var(--addr-shadow);gap:2px;
+    }
+    .addr-nav.is-on{display:flex;}
+    .addr-nav a{padding:10px 14px;border-radius:10px;}
+    .addr-header__in{position:relative;height:60px;gap:12px;}
+    .addr-search{margin-left:auto;display:none;}
+    .addr-burger{display:flex;margin-left:auto;}
+    .addr-hero{grid-template-columns:1fr;padding:34px 0;}
+    .addr-hero__visual{order:-1;}
+    .addr-intro__cols{grid-template-columns:1fr;}
+    .addr-focus{grid-template-columns:1fr;}
+    .addr-story{grid-template-columns:1fr;}
+    .addr-contact{grid-template-columns:1fr;}
+    .addr-wall{grid-template-columns:repeat(2,1fr);}
+    .addr-wall__item--big{grid-column:span 2;grid-row:span 1;}
+    .addr-wall__item--tall{grid-row:span 1;}
+    .addr-quotes{grid-template-columns:1fr;}
+    .addr-updates{grid-template-columns:1fr;}
+    .addr-announce{font-size:12px;}
+  }
+  @media(max-width:560px){
+    .addr-flow{grid-template-columns:1fr;}
+    .addr-creators{grid-template-columns:1fr;}
+    .addr-topics{grid-template-columns:1fr;}
+    .addr-partners{grid-template-columns:1fr 1fr;}
+    .addr-footer__top{grid-template-columns:1fr;}
+    .addr-hotsearch{display:none;}
+  }
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="addr-stickywrap">
+  <div class="addr-announce" id="addrAnnounce">
+    <span class="addr-announce__badge">更新</span>
+    <div class="addr-announce__track" id="addrAnnounceTrack">
+      <div class="addr-announce__item is-on"><b>11-18</b> 新增《老门牌测绘手册》第 3 期・电梯楼旧址影像 12 段</div>
+      <div class="addr-announce__item"><b>11-16</b>「失效地址7086」冬季线索征集开启，预计收录 240 条新地址</div>
+      <div class="addr-announce__item"><b>11-12</b> 品牌官网创作者联盟名单公布，新增 9 位影像作者</div>
+    </div>
+    <a class="addr-announce__more" href="#addrUpdates">全部动态</a>
+  </div>
+
+  <header class="addr-header">
+    <div class="addr-header__in">
+      <a class="addr-brand" href="#addrTop">
+        <span class="addr-brand__mark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19 L12 4 L21 19 Z" fill="none" stroke="#ff5a3c" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="15" r="2.4" fill="#f2b73c"/></svg>
+        </span>
+        <span class="addr-brand__txt">
+          <b>失效地址7086</b>
+          <span>ADDR 7086</span>
+        </span>
+      </a>
+      <nav class="addr-nav" id="addrNav">
+        <a href="#addrTop">首页</a>
+        <a href="#addrFocus">焦点影像</a>
+        <a href="#addrTopics">专题企划</a>
+        <a href="#addrCreators">创作者</a>
+        <a href="#addrUpdates">企业动态</a>
+        <a href="#addrFaq">帮助</a>
+        <a href="#addrContact">联系</a>
+      </nav>
+      <form class="addr-search" id="addrSearchForm" role="search">
+        <input type="search" id="addrSearchInput" placeholder="搜索地址 · 影像 · 作者" aria-label="站内搜索">
+        <button type="submit">搜索</button>
+      </form>
+      <button class="addr-burger" id="addrBurger" aria-label="展开导航"><span></span></button>
+    </div>
+    <div class="addr-searchback" id="addrSearchBack"></div>
+  </header>
+</div>
+
+<main id="addrTop">
+  <div class="addr-main">
+    <!-- 首屏 -->
+    <section class="addr-hero" aria-labelledby="addrHeroTitle">
+      <div class="addr-hero__text">
+        <span class="addr-hero__eyebrow"><i></i>失效地址7086 官方网站 · 品牌影像档案</span>
+        <h1 id="addrHeroTitle">失效地址7086<em>_</em>把消失的门牌留下来</h1>
+        <p class="addr-hero__lead">「失效地址7086」是一个专注城市地址变迁的影像内容品牌。我们以镜头记录正在失效的街道门牌、旧楼编号与搬迁现场，为创作者与企业搭建可信的高品质内容生态，让每一个被抹去的地址重新获得被看见的机会。作为持续运营的垂直领域平台，我们坚持原创、正版与真实，用专业影像陪伴城市成长。</p>
+        <div class="addr-hero__btns">
+          <a class="addr-btn addr-btn--solid" href="#addrFocus">浏览焦点影像</a>
+          <a class="addr-btn addr-btn--ghost" href="#addrSubmit" data-addr-modal="submit">上传我的地址线索</a>
+        </div>
+        <div class="addr-stats">
+          <div class="addr-stats__item"><b data-addr-count="2860">0</b><span>收录失效地址</span></div>
+          <div class="addr-stats__item"><b data-addr-count="1240">0</b><span>原创影像作品</span></div>
+          <div class="addr-stats__item"><b data-addr-count="86">0</b><span>合作创作者</span></div>
+        </div>
+      </div>
+      <div class="addr-hero__visual">
+        <div class="addr-hero__frame">
+          <svg viewBox="0 0 640 400" role="img" aria-label="黄昏时分被围挡的街角老楼与失效门牌">
+            <defs>
+              <linearGradient id="addrSky1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#2b3d55"/><stop offset=".55" stop-color="#7c6a7e"/><stop offset="1" stop-color="#f2a464"/>
+              </linearGradient>
+              <linearGradient id="addrWall1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#4c4a48"/><stop offset="1" stop-color="#2c2b2a"/>
+              </linearGradient>
+            </defs>
+            <rect width="640" height="400" fill="url(#addrSky1)"/>
+            <circle cx="500" cy="130" r="46" fill="#ffd79b" opacity=".85"/>
+            <rect x="0" y="300" width="640" height="100" fill="#1b1f26"/>
+            <rect x="60" y="120" width="180" height="190" fill="url(#addrWall1)"/>
+            <rect x="250" y="170" width="130" height="140" fill="#3a3a3c"/>
+            <rect x="390" y="90" width="150" height="220" fill="#33353a"/>
+            <g fill="#ffdf9e" opacity=".8">
+              <rect x="80" y="150" width="26" height="34"/><rect x="126" y="150" width="26" height="34"/>
+              <rect x="172" y="150" width="26" height="34"/><rect x="80" y="212" width="26" height="34"/>
+              <rect x="172" y="212" width="26" height="34"/>
+              <rect x="410" y="120" width="24" height="30"/><rect x="452" y="120" width="24" height="30"/>
+              <rect x="494" y="120" width="24" height="30"/><rect x="452" y="180" width="24" height="30"/>
+            </g>
+            <rect x="280" y="210" width="70" height="100" fill="#171a20"/>
+            <g>
+              <rect x="150" y="245" width="82" height="30" rx="4" fill="#f3f1ec" stroke="#c9c4b8"/>
+              <text x="191" y="266" font-size="15" font-weight="700" text-anchor="middle" fill="#ff5a3c" font-family="sans-serif">7086</text>
+              <line x1="150" y1="250" x2="232" y2="272" stroke="#ff5a3c" stroke-width="3" opacity=".85"/>
+            </g>
+            <rect x="0" y="290" width="640" height="12" fill="#ff5a3c" opacity=".6"/>
+            <g stroke="#e9e6df" stroke-width="3" opacity=".5">
+              <line x1="40" y1="300" x2="40" y2="340"/><line x1="600" y1="300" x2="600" y2="340"/>
+            </g>
+          </svg>
+        </div>
+        <div class="addr-hero__pin">
+          <b>7086</b>
+          记录地点：南浦路 7086 号<br>状态：已围挡 · 待更新
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 品牌深度解析 -->
+  <section class="addr-sec" id="addrAbout">
+    <div class="addr-main">
+      <div class="addr-intro">
+        <h2>失效地址7086：一个把地址当作叙事对象的品牌</h2>
+        <p class="addr-intro__sub">企业官方解读 · 定位、方法与长期计划</p>
+        <div class="addr-intro__cols">
+          <div>
+            <p>「失效地址7086」并不是一个单纯的门牌编号，而是我们把城市中那些被拆除、被合并、被改写的地址，统一归档到的一套影像编号体系。作为深耕城市影像这一垂直领域的原创品牌，我们从 2018 年起持续运营一支小型纪录片团队，用镜头追踪老街区的最后清晨，用访谈留住原住民的搬迁记忆。官方网站上线的每一条内容，都经过实地拍摄、地址核验与作者授权三重流程，确保正版、高清、可信。</p>
+            <p>我们相信地址是城市最朴素的时间刻度。一条街的门牌从 7086 变成 7086-1，再从 7086-1 彻底消失，背后往往是家庭、商铺、学校与工厂的集体迁徙。品牌以「失效地址7086」为核心命题，建立内容生态：创作者上传线索，编辑团队复核，影像作者完成拍摄，最终以短片、图文、声音档案三种形态沉淀为可检索的公共记录。这不是一场怀旧消费，而是一份长期有效、可供研究与回望的城市底稿。</p>
+            <p>在方法上，我们坚持三件事：第一，真实优先，不摆拍、不虚构、不改写当事人叙述；第二，专业流程，每条地址都有坐标、拍摄时间、取材人、授权状态四个字段；第三，多元包容，无论是城中村、老厂房、旧车站还是被合并的门牌号，都能在平台上获得同等位置。创作者社区是我们最重要的资产，86 位常驻作者与近 400 位投稿用户共同构成了这个内容生态的根系。</p>
+          </div>
+          <div>
+            <p>对企业与机构合作伙伴，失效地址7086官网提供定制化的城市记忆影像服务：为地产更新项目留存原址影像，为文化机构制作专题展陈片，为地方志部门提供地址变迁的可视化素材。我们不做流量生意，只做值得信赖的长期品牌资产。行业领先的地址核验流程与创作者分级机制，让我们在口碑层面获得了大量来自高校、媒体与城市研究者的引用与推荐。</p>
+            <p>品牌的内容结构分为四条主线：焦点影像负责具有公共价值的深度命题；专题企划负责按季度推进的系列观察；创作者联盟负责个体叙事与在地经验；企业动态负责透明地公开我们的更新、比赛与报名信息。四条线彼此咬合，既保证了内容的稳定性，也让社区始终保持新鲜的活力。</p>
+            <p>2026 年冬季，我们将「失效地址7086」的收录范围从主城区扩展到近郊工业带，并首次开放公众投票，由社区共同决定下一年度的拍摄优先级。我们期待更多影像作者、城市研究者与普通居民加入：上传一条线索、下载一份拍摄攻略、参加一次挑战赛，都是在为这座城市保留一份真实的温度。品牌故事仍在书写，而我们希望，它是被共同书写的。</p>
+          </div>
+        </div>
+        <blockquote>“地址会失效，但记录不应当失效。失效地址7086，为每一块即将被取下的门牌，留下一段可以被检索的影像。”</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- 焦点影像 -->
+  <section class="addr-sec addr-sec--alt" id="addrFocus">
+    <div class="addr-main">
+      <div class="addr-sechead">
+        <div>
+          <h2>焦点影像：本期地址观察</h2>
+          <p>由品牌编辑部与创作者联盟共同推荐，关注失效地址7086背后的真实生活</p>
+        </div>
+        <span class="addr-sechead__tag">FOCUS</span>
+      </div>
+      <div class="addr-focus">
+        <article class="addr-vcard">
+          <div class="addr-vcard__thumb">
+            <svg viewBox="0 0 640 360" role="img" aria-label="老巷尽头正在搬迁的杂货铺，货架空置门牌被取下">
+              <rect width="640" height="360" fill="#2c3a42"/>
+              <rect x="0" y="250" width="640" height="110" fill="#1d2429"/>
+              <rect x="80" y="70" width="200" height="180" fill="#3f4d55"/>
+              <rect x="320" y="110" width="170" height="140" fill="#4a555c"/>
+              <rect x="520" y="60" width="90" height="190" fill="#39434a"/>
+              <g fill="#f2c98a" opacity=".85">
+                <rect x="100" y="100" width="30" height="38"/><rect x="150" y="100" width="30" height="38"/>
+                <rect x="200" y="100" width="30" height="38"/><rect x="100" y="160" width="30" height="38"/>
+                <rect x="340" y="140" width="28" height="34"/><rect x="390" y="140" width="28" height="34"/>
+              </g>
+              <rect x="250" y="210" width="60" height="40" fill="#f3f1ec" stroke="#c9c4b8"/>
+              <text x="280" y="236" font-size="17" font-weight="700" text-anchor="middle" fill="#ff5a3c" font-family="sans-serif">7086</text>
+              <rect x="420" y="270" width="120" height="70" fill="#5a4a3c"/>
+              <rect x="440" y="285" width="80" height="12" fill="#d9c6a8"/>
+              <rect x="440" y="310" width="80" height="12" fill="#d9c6a8"/>
+              <circle cx="120" cy="270" r="16" fill="#20282e"/>
+              <path d="M0 0 L640 0 L640 90 L0 130 Z" fill="#10161b" opacity=".45"/>
+            </svg>
+            <span class="addr-vcard__label">深度纪录</span>
+            <span class="addr-vcard__play" aria-hidden="true"></span>
+          </div>
+          <div class="addr-vcard__body">
+            <h3>最后一天营业：南浦路 7086 号杂货铺的 27 年</h3>
+            <p>一间 18 平方米的杂货铺，三代人守着同一块门牌。镜头跟拍了它闭店前的 72 小时：清空货架、拆下招牌、把地址牌交给店主。这是一次关于失效地址的完整告别。</p>
+            <div class="addr-vcard__meta">
+              <span class="addr-vcard__who"><span class="addr-ava" style="background:#1c8f80">林</span>林岸</span>
+              <span>18.6万播放</span><span>11-14</span>
+            </div>
+            <div class="addr-vcard__tags"><span class="addr-chip">城市探索</span><span class="addr-chip">人物访谈</span><span class="addr-chip">原址记录</span></div>
+            <div class="addr-vcard__acts">
+              <button class="addr-act" data-addr-like>♡ <b>4218</b></button>
+              <button class="addr-act" data-addr-save>☆ 收藏</button>
+              <button class="addr-act" data-addr-share>分享</button>
+            </div>
+          </div>
+        </article>
+        <article class="addr-vcard">
+          <div class="addr-vcard__thumb">
+            <svg viewBox="0 0 640 360" role="img" aria-label="俯拍旧城街道地图与红色标注的失效门牌坐标">
+              <rect width="640" height="360" fill="#e8e5dd"/>
+              <g stroke="#c9c4b8" stroke-width="2">
+                <path d="M0 90 H640"/><path d="M0 190 H640"/><path d="M0 290 H640"/>
+                <path d="M110 0 V360"/><path d="M280 0 V360"/><path d="M450 0 V360"/><path d="M560 0 V360"/>
+              </g>
+              <rect x="130" y="110" width="120" height="60" fill="#d8d3c7"/>
+              <rect x="300" y="210" width="130" height="60" fill="#d8d3c7"/>
+              <rect x="470" y="110" width="70" height="60" fill="#d8d3c7"/>
+              <circle cx="210" cy="160" r="10" fill="#ff5a3c"/>
+              <circle cx="360" cy="240" r="10" fill="#ff5a3c"/>
+              <circle cx="505" cy="140" r="8" fill="#1c8f80"/>
+              <path d="M210 160 L360 240 L505 140" stroke="#ff5a3c" stroke-width="2.5" fill="none" stroke-dasharray="7 6"/>
+              <rect x="230" y="150" width="96" height="24" rx="4" fill="#fff" stroke="#ff5a3c"/>
+              <text x="278" y="167" font-size="14" font-weight="700" text-anchor="middle" fill="#ff5a3c" font-family="sans-serif">7086</text>
+            </svg>
+            <span class="addr-vcard__label">数据可视化</span>
+            <span class="addr-vcard__play" aria-hidden="true"></span>
+          </div>
+          <div class="addr-vcard__body">
+            <h3>7086 之后：一份失效门牌的坐标地图</h3>
+            <p>我们把过去三年采集的 2860 条失效地址叠加到城市地图上，看见消失的轨迹如何聚拢成带状，并重新解释了编号体系的变化逻辑。</p>
+            <div class="addr-vcard__meta">
+              <span class="addr-vcard__who"><span class="addr-ava" style="background:#b0672a">周</span>周砚</span>
+              <span>9.4万播放</span><span>11-09</span>
+            </div>
+            <div class="addr-vcard__tags"><span class="addr-chip">知识科普</span><span class="addr-chip">行业观察</span></div>
+            <div class="addr-vcard__acts">
+              <button class="addr-act" data-addr-like>♡ <b>2873</b></button>
+              <button class="addr-act" data-addr-save>☆ 收藏</button>
+              <button class="addr-act" data-addr-share>分享</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 热门视频流 -->
+  <section class="addr-sec" id="addrFlow">
+    <div class="addr-main">
+      <div class="addr-sechead">
+        <div>
+          <h2>热门视频流：社区正在记录</h2>
+          <p>来自创作者联盟的原创作品，按社区热度与口碑排序</p>
+        </div>
+        <span class="addr-sechead__tag">6 条新作</span>
+      </div>
+      <div class="addr-flow">
+        <article class="addr-vcard">
+          <div class="addr-vcard__thumb">
+            <svg viewBox="0 0 480 270" role="img" aria-label="雨夜中旧车站站牌与倒影，门牌号模糊">
+              <rect width="480" height="270" fill="#1e2a36"/>
+              <rect x="0" y="200" width="480" height="70" fill="#101820"/>
+              <rect x="150" y="60" width="180" height="140" fill="#2b3a48"/>
+              <rect x="176" y="86" width="128" height="26" fill="#e8e5dd"/>
+              <text x="240" y="105" font-size="16" font-weight="800" text-anchor="middle" fill="#ff5a3c" font-family="sans-serif">7086</text>
+              <g stroke="#5d7c96" stroke-width="2" opacity=".6">
+                <line x1="60" y1="40" x2="60" y2="200"/><line x1="80" y1="60" x2="80" y2="200"/>
+                <line x1="400" y1="50" x2="400" y2="200"/><line x1="420" y1="70" x2="420" y2="200"/>
+              </g>
+              <ellipse cx="240" cy="238" rx="120" ry="12" fill="#3c6a8a" opacity=".45"/>
+            </svg>
+            <span class="addr-vcard__play" aria-hidden="true"></span>
+          </div>
+          <div class="addr-vcard__body">
+            <h3>雨夜站牌：一个编号被涂掉的公交站</h3>
+            <p>站牌编号被系统合并后，乘客仍在原处等车。</p>
+            <div class="addr-vcard__meta"><span class="addr-vcard__who"><span class="addr-ava" style="background:#3c6a8a">苏</span>苏杭</span><span>6.2万</span></div>
+            <div class="addr-vcard__acts">
+              <button class="addr-act" data-addr-like>♡ <b>1568</b></button>
+              <button class="addr-act" data-addr-save>☆ 收藏</button>
+            </div>
+          </div>
+        </article>
+        <article class="addr-vcard">
+          <div class="addr-vcard__thumb">
+            <svg viewBox="0 0 480 270" role="img" aria-label="手绘旧门牌拓印过程，纸张与墨水特写">
+              <rect width="480" height="270" fill="#f0ece2"/>
+              <rect x="70" y="50" width="160" height="180" fill="#fff" stroke="#c9c4b8" transform="rotate(-4 150 140)"/>
+              <rect x="250" y="60" width="160" height="170" fill="#fff" stroke="#c9c4b8" transform="rotate(3 330 145)"/>
+              <text x="150" y="150" font-size="42" font-weight="800" text-anchor="middle" fill="#2a3546" font-family="sans-serif" transform="rotate(-4 150 140)">7086</text>
+              <text x="330" y="160" font-size="34" font-weight="700" text-anchor="middle" fill="#ff5a3c" font-family="sans-serif" transform="rotate(3 330 145)">失效</text>
+              <circle cx="120" cy="230" r="12" fill="#2a3546"/><rect x="260" y="230" width="140" height="8" rx="4" fill="#b8b2a4"/>
+            </svg>
+            <span class="addr-vcard__play" aria-hidden="true"></span>
+          </div>
+          <div class="addr-vcard__body">
+            <h3>拓印教程：把一块门牌做成纸质档案</h3>
+            <p>六步完成拓印、编号与归档，附拍摄布光思路。</p>
+            <div class="addr-vcard__meta"><span class="addr-vcard__who"><span class="addr-ava" style="background:#b0672a">陈</span>陈默</span><span>4.8万</span></div>
+            <div class="addr-vcard__acts">
+              <button class="addr-act" data-addr-like>♡ <b>1204</b></button>
+              <button class="addr-act" data-addr-save>☆ 收藏</button>
+            </div>
+          </div>
+        </article>
+        <article class="addr-vcard">
+          <div class="addr-vcard__thumb">
+            <svg viewBox="0 0 480 270" role="img" aria-label="城郊工业带航拍视角，烟囱与红线标注的拆迁范围">
+              <rect width="480" height="270" fill="#c9d3c4"/>
+              <rect x="0" y="160" width="480" height="110" fill="#8fa087"/>
+              <rect x="60" y="90" width="90" height="80" fill="#6f7a6b"/>
+              <rect x="200" y="60" width="40" height="110" fill="#5f6a5c"/>
+              <rect x="280" y="100" width="110" height="70" fill="#6f7a6b"/>
+              <path d="M40 40 L440 40 L440 230 L40 230 Z" fill="none" stroke="#ff5a3c" stroke-width="3" stroke-dasharray="10 8"/>
+              <text x="240" y="30" font-size="16" font-weight="800" text-anchor="middle" fill="#c7381d" font-family="sans-serif">拆迁范围 · 7086 片区</text>
+            </svg>
+            <span class="addr-vcard__play" aria-hidden="true"></span>
+          </div>
+          <div class="addr-vcard__body">
+            <h3>近郊工业带：被编号的烟囱与仓库</h3>
+            <p>三座工厂、两条专用线，记录一次整体搬迁。</p>
+            <div class="addr-vcard__meta"><span class="addr-vcard__who"><span class="addr-ava" style="background:#5f6a5c">韩</span>韩川</span><span>5.7万</span></div>
+            <div class="addr-vcard__acts">
+              <button class="addr-act" data-addr-like>♡ <b>1390</b></button>
+              <button class="addr-act" data-addr-save>☆ 收藏</button>
+            </div>
+          </div>
+        </article>
+        <article class="addr-vcard">
+          <div class="addr-vcard__thumb">
+            <svg viewBox="0 0 480 270" role="img" aria-label="老人坐在老院门口，门牌被红笔圈出">
+              <rect width="480" height="270" fill="#e3d9c8"/>
+              <rect x="0" y="180" width="480" height="90" fill="#b8a68c"/>
+              <rect x="80" y="40" width="200" height="140" fill="#8c7a62"/>
+              <rect x="140" y="100" width="70" height="80" fill="#3a3226"/>
+              <circle cx="330" cy="140" r="26" fill="#6a5a46"/>
+              <rect x="306" y="166" width="48" height="14" rx="6" fill="#4a3f30"/>
+              <circle cx="260" cy="110" r="26" fill="none" stroke="#ff5a3c" stroke-width="3"/>
+              <text x="260" y="116" font-size="16" font-weight="800" text-anchor="middle" fill="#ff5a3c" font-family="sans-serif">7086</text>
+            </svg>
+            <span class="addr-vcard__play" aria-hidden="true"></span>
+          </div>
+          <div class="addr-vcard__body">
+            <h3>院门口的第三次搬家：访 78 岁居民何阿姨</h3>
+            <p>她用一本账簿记下每次换地址的日期与理由。</p>
+            <div class="addr-vcard__meta"><span class="addr-vcard__who"><span class="addr-ava" style="background:#8c6a3f">何</span>何知远</span><span>7.1万</span></div>
+            <div class="addr-vcard__acts">
+              <button class="addr-act" data-addr-like>♡ <b>2140</b></button>
+              <button class="addr-act" data-addr-save>☆ 收藏</button>
+            </div>
+          </div>
+        </article>
+        <article class="addr-vcard">
+          <div class="addr-vcard__thumb">
+            <svg viewBox="0 0 480 270" role="img" aria-label="夜间便利店招牌与街道新门牌对照">
+              <rect width="480" height="270" fill="#141b23"/>
+              <rect x="0" y="170" width="480" height="100" fill="#1f2a34"/>
+              <rect x="60" y="60" width="150" height="110" fill="#2a3a48"/>
+              <rect x="90" y="80" width="90" height="34" rx="4" fill="#ff5a3c"/>
+              <text x="135" y="104" font-size="17" font-weight="800" text-anchor="middle" fill="#fff" font-family="sans-serif">便利店</text>
+              <rect x="300" y="70" width="120" height="100" fill="#243240"/>
+              <rect x="320" y="96" width="80" height="30" fill="#e8e5dd"/>
+              <text x="360" y="117" font-size="15" font-weight="800" text-anchor="middle" fill="#1c8f80" font-family="sans-serif">7086-1</text>
+              <ellipse cx="240" cy="230" rx="160" ry="16" fill="#3b5570" opacity=".35"/>
+            </svg>
+            <span class="addr-vcard__play" aria-hidden="true"></span>
+          </div>
+          <div class="addr-vcard__body">
+            <h3>7086 到 7086-1：编号里的一道横杠</h3>
+            <p>便利店门牌加后缀的三年，街道发生了什么。</p>
+            <div class="addr-vcard__meta"><span class="addr-vcard__who"><span class="addr-ava" style="background:#2a6b8a">郑</span>郑一鸣</span><span>5.3万</span></div>
+            <div class="addr-vcard__acts">
+              <button class="addr-act" data-addr-like>♡ <b>1102</b></button>
+              <button class="addr-act" data-addr-save>☆ 收藏</button>
+            </div>
+          </div>
+        </article>
+        <article class="addr-vcard">
+          <div class="addr-vcard__thumb">
+            <svg viewBox="0 0 480 270" role="img" aria-label="旧信箱堆放与信件特写，纸箱上写着地址清单">
+              <rect width="480" height="270" fill="#efe7d8"/>
+              <rect x="40" y="80" width="130" height="150" fill="#c9b894"/>
+              <rect x="190" y="110" width="110" height="120" fill="#d8c8a8"/>
+              <rect x="320" y="60" width="120" height="170" fill="#bfae8c"/>
+              <g fill="#8a7a5e">
+                <rect x="60" y="100" width="90" height="42"/><rect x="60" y="156" width="90" height="42"/>
+                <rect x="206" y="130" width="78" height="36"/><rect x="336" y="90" width="88" height="40"/>
+              </g>
+              <rect x="150" y="196" width="180" height="14" rx="4" fill="#ff5a3c" opacity=".8"/>
+              <text x="240" y="207" font-size="12" font-weight="700" text-anchor="middle" fill="#fff" font-family="sans-serif">地址清单 · 7086</text>
+            </svg>
+            <span class="addr-vcard__play" aria-hidden="true"></span>
+          </div>
+          <div class="addr-vcard__body">
+            <h3>收不到的信：旧信箱清点现场</h3>
+            <p>搬迁后遗留的 217 封信，被逐一核对地址。</p>
+            <div class="addr-vcard__meta"><span class="addr-vcard__who"><span class="addr-ava" style="background:#8a7a5e">许</span>许北</span><span>6.9万</span></div>
+            <div class="addr-vcard__acts">
+              <button class="addr-act" data-addr-like>♡ <b>1876</b></button>
+              <button class="addr-act" data-addr-save>☆ 收藏</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 专题企划 -->
+  <section class="addr-sec addr-sec--alt" id="addrTopics">
+    <div class="addr-main">
+      <div class="addr-sechead">
+        <div>
+          <h2>专题企划：按季度推进的地址观察</h2>
+          <p>每个专题由品牌编辑部立项，创作者联盟联合执行</p>
+        </div>
+        <span class="addr-sechead__tag">SEASON 04</span>
+      </div>
+      <div class="addr-topics">
+        <article class="addr-topic">
+          <h3>老门牌测绘手册</h3>
+          <p>以测绘的方式记录门牌的尺寸、字体、铆钉与锈迹，已产出 3 期，涵盖 412 块门牌。附拍摄攻略与归档表格模板。</p>
+          <div class="addr-topic__state"><i></i>更新中 · 第 4 期筹备</div>
+        </article>
+        <article class="addr-topic">
+          <h3>搬迁前夜</h3>
+          <p>在居民搬离前的最后一个夜晚进入现场，记录家具、灯光与说话声。这是一个关于真实与温柔的长期影像计划。</p>
+          <div class="addr-topic__state"><i></i>更新中 · 已发布 11 条</div>
+        </article>
+        <article class="addr-topic">
+          <h3>编号之外</h3>
+          <p>采访城市规划、地名管理与地址核验从业者，讨论编号体系背后的制度与创新。适合行业观察与企业参考。</p>
+          <div class="addr-topic__state"><i></i>已完结 · 共 8 集</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 创作者矩阵 -->
+  <section class="addr-sec" id="addrCreators">
+    <div class="addr-main">
+      <div class="addr-sechead">
+        <div>
+          <h2>创作者联盟：他们在记录失效地址7086</h2>
+          <p>经过品牌认证的原创作者，持续输出高品质城市影像内容</p>
+        </div>
+        <span class="addr-sechead__tag">86 位</span>
+      </div>
+      <div class="addr-creators">
+        <article class="addr-creator">
+          <div class="addr-creator__ava" style="background:linear-gradient(135deg,#1c8f80,#2a6b8a)">林</div>
+          <h3>林岸</h3>
+          <div class="addr-creator__field">纪录片导演</div>
+          <p>擅长长时间跟拍，代表作为《最后一天营业》系列，关注商铺与家庭的空间迁移。</p>
+          <div class="addr-creator__nums"><div>作品<b>42</b></div><div>粉丝<b>18.6万</b></div></div>
+        </article>
+        <article class="addr-creator">
+          <div class="addr-creator__ava" style="background:linear-gradient(135deg,#b0672a,#d9a05b)">周</div>
+          <h3>周砚</h3>
+          <div class="addr-creator__field">数据影像</div>
+          <p>把地址数据做成可视化的地图与图表，让城市变迁的轨迹可以被直观看见。</p>
+          <div class="addr-creator__nums"><div>作品<b>27</b></div><div>粉丝<b>9.4万</b></div></div>
+        </article>
+        <article class="addr-creator">
+          <div class="addr-creator__ava" style="background:linear-gradient(135deg,#8c6a3f,#c9483c)">陈</div>
+          <h3>陈默</h3>
+          <div class="addr-creator__field">手作档案</div>
+          <p>专注拓印、装帧与纸质归档，分享可复用的门牌记录方法与器材选择。</p>
+          <div class="addr-creator__nums"><div>作品<b>35</b></div><div>粉丝<b>4.8万</b></div></div>
+        </article>
+        <article class="addr-creator">
+          <div class="addr-creator__ava" style="background:linear-gradient(135deg,#3a4a60,#6a7f9c)">何</div>
+          <h3>何知远</h3>
+          <div class="addr-creator__field">人物访谈</div>
+          <p>善于在十分钟内建立信任，长期采访搬迁居民与老店主，语言平实而有力量。</p>
+          <div class="addr-creator__nums"><div>作品<b>19</b></div><div>粉丝<b>7.1万</b></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 作品墙 -->
+  <section class="addr-sec addr-sec--alt" id="addrWall">
+    <div class="addr-main">
+      <div class="addr-sechead">
+        <div>
+          <h2>影像墙：社区作品精选</h2>
+          <p>来自投稿用户的原创静态影像与短片段，按主题混合陈列</p>
+        </div>
+        <span class="addr-sechead__tag">9 幅</span>
+      </div>
+      <div class="addr-wall">
+        <figure class="addr-wall__item addr-wall__item--big" style="margin:0">
+          <svg viewBox="0 0 480 340" role="img" aria-label="傍晚的旧楼转角，墙面残留门牌安装痕迹">
+            <rect width="480" height="340" fill="#5b6b7a"/>
+            <rect x="0" y="240" width="480" height="100" fill="#2b333c"/>
+            <rect x="40" y="60" width="180" height="180" fill="#3d4a56"/>
+            <rect x="250" y="100" width="180" height="140" fill="#4a5764"/>
+            <g fill="#f2c98a" opacity=".8">
+              <rect x="70" y="100" width="34" height="40"/><rect x="130" y="100" width="34" height="40"/>
+              <rect x="290" y="140" width="32" height="38"/><rect x="360" y="140" width="32" height="38"/>
+            </g>
+            <rect x="150" y="200" width="50" height="24" fill="#e8e5dd" opacity=".85"/>
+            <circle cx="400" cy="60" r="30" fill="#ffd79b" opacity=".7"/>
+          </svg>
+          <figcaption class="addr-wall__cap">转角处的门牌痕迹 · 林岸</figcaption>
+        </figure>
+        <figure class="addr-wall__item addr-wall__item--tall" style="margin:0">
+          <svg viewBox="0 0 240 340" role="img" aria-label="竖幅旧楼道光线与扶手">
+            <rect width="240" height="340" fill="#20282f"/>
+            <rect x="30" y="0" width="60" height="340" fill="#2e3841"/>
+            <g fill="#ffd79b" opacity=".55"><rect x="34" y="40" width="52" height="46"/><rect x="34" y="140" width="52" height="46"/></g>
+            <path d="M120 340 V120 L210 60" stroke="#7c8996" stroke-width="6" fill="none"/>
+            <rect x="120" y="60" width="110" height="16" fill="#3d4a56"/>
+          </svg>
+          <figcaption class="addr-wall__cap">楼道里的第七级台阶 · 苏杭</figcaption>
+        </figure>
+        <figure class="addr-wall__item" style="margin:0">
+          <svg viewBox="0 0 240 180" role="img" aria-label="门牌铆钉与锈迹微距特写">
+            <rect width="240" height="180" fill="#d8d3c7"/>
+            <rect x="40" y="40" width="160" height="70" rx="6" fill="#f3f1ec" stroke="#b8b2a4"/>
+            <text x="120" y="86" font-size="30" font-weight="800" text-anchor="middle" fill="#2a3546" font-family="sans-serif">7086</text>
+            <circle cx="54" cy="54" r="6" fill="#8a7a5e"/><circle cx="186" cy="54" r="6" fill="#8a7a5e"/>
+            <path d="M60 120 q40 22 90 6 q30 -10 40 8" stroke="#a8724a" stroke-width="4" fill="none"/>
+          </svg>
+          <figcaption class="addr-wall__cap">铆钉与锈 · 陈默</figcaption>
+        </figure>
+        <figure class="addr-wall__item" style="margin:0">
+          <svg viewBox="0 0 240 180" role="img" aria-label="拆迁围挡上的蓝色喷漆编号">
+            <rect width="240" height="180" fill="#3f6a7c"/>
+            <g stroke="#2c4a58" stroke-width="3"><line x1="0" y1="60" x2="240" y2="60"/><line x1="0" y1="120" x2="240" y2="120"/></g>
+            <text x="120" y="108" font-size="42" font-weight="800" text-anchor="middle" fill="#e9e6df" font-family="sans-serif" opacity=".9">7086</text>
+          </svg>
+          <figcaption class="addr-wall__cap">围挡上的编号 · 韩川</figcaption>
+        </figure>
+        <figure class="addr-wall__item" style="margin:0">
+          <svg viewBox="0 0 240 180" role="img" aria-label="旧式蓝色门牌悬挂在砖墙上">
+            <rect width="240" height="180" fill="#a8785e"/>
+            <g stroke="#8c6249" stroke-width="2"><line x1="0" y1="30" x2="240" y2="30"/><line x1="0" y1="60" x2="240" y2="60"/><line x1="0" y1="90" x2="240" y2="90"/><line x1="0" y1="120" x2="240" y2="120"/><line x1="0" y1="150" x2="240" y2="150"/></g>
+            <rect x="70" y="66" width="100" height="48" rx="4" fill="#1e4e8c"/>
+            <text x="120" y="98" font-size="22" font-weight="800" text-anchor="middle" fill="#fff" font-family="sans-serif">7086</text>
+          </svg>
+          <figcaption class="addr-wall__cap">蓝色门牌 · 许北</figcaption>
+        </figure>
+        <figure class="addr-wall__item addr-wall__item--big" style="margin:0">
+          <svg viewBox="0 0 480 340" role="img" aria-label="城市天际线下正在拆除的旧街区剪影">
+            <rect width="480" height="340" fill="#8fa2b5"/>
+            <rect x="0" y="250" width="480" height="90" fill="#38424e"/>
+            <rect x="60" y="150" width="70" height="100" fill="#4a5764"/>
+            <rect x="150" y="120" width="60" height="130" fill="#3d4a56"/>
+            <rect x="230" y="180" width="80" height="70" fill="#556370"/>
+            <rect x="330" y="100" width="50" height="150" fill="#46535f"/>
+            <rect x="390" y="170" width="60" height="80" fill="#4f5c69"/>
+            <path d="M150 120 L180 80 L210 120" fill="none" stroke="#ff5a3c" stroke-width="4"/>
+            <path d="M360 250 h80" stroke="#ff5a3c" stroke-width="4" stroke-dasharray="8 6"/>
+          </svg>
+          <figcaption class="addr-wall__cap">等待拆除的第五街区 · 周砚</figcaption>
+        </figure>
+        <figure class="addr-wall__item" style="margin:0">
+          <svg viewBox="0 0 240 180" role="img" aria-label="旧信件与印章特写，地址栏被划掉">
+            <rect width="240" height="180" fill="#efe7d8"/>
+            <rect x="30" y="36" width="180" height="110" rx="4" fill="#fff" stroke="#c9c4b8"/>
+            <g stroke="#c9c4b8" stroke-width="2"><line x1="50" y1="66" x2="190" y2="66"/><line x1="50" y1="90" x2="190" y2="90"/><line x1="50" y1="114" x2="140" y2="114"/></g>
+            <line x1="50" y1="66" x2="190" y2="66" stroke="#c9483c" stroke-width="3"/>
+            <circle cx="176" cy="120" r="18" fill="none" stroke="#c9483c" stroke-width="3"/>
+          </svg>
+          <figcaption class="addr-wall__cap">被划掉的收件地址 · 何知远</figcaption>
+        </figure>
+        <figure class="addr-wall__item" style="margin:0">
+          <svg viewBox="0 0 240 180" role="img" aria-label="晨雾中的老站台与铁轨延伸">
+            <rect width="240" height="180" fill="#b9c4cc"/>
+            <rect x="0" y="120" width="240" height="60" fill="#6c7884"/>
+            <g stroke="#8b96a1" stroke-width="3"><line x1="0" y1="140" x2="240" y2="130"/><line x1="0" y1="165" x2="240" y2="150"/></g>
+            <rect x="20" y="60" width="60" height="60" fill="#7d8994" opacity=".8"/>
+            <rect x="150" y="70" width="70" height="50" fill="#7d8994" opacity=".6"/>
+            <circle cx="190" cy="40" r="20" fill="#f2f0e8" opacity=".8"/>
+          </svg>
+          <figcaption class="addr-wall__cap">雾中的旧站台 · 郑一鸣</figcaption>
+        </figure>
+        <figure class="addr-wall__item" style="margin:0">
+          <svg viewBox="0 0 240 180" role="img" aria-label="手写地址清单笔记本与铅笔">
+            <rect width="240" height="180" fill="#e5ddcc"/>
+            <rect x="40" y="30" width="160" height="120" fill="#faf7ef" stroke="#c9c4b8"/>
+            <g stroke="#b8b2a4" stroke-width="1.5">
+              <line x1="60" y1="58" x2="180" y2="58"/><line x1="60" y1="78" x2="180" y2="78"/>
+              <line x1="60" y1="98" x2="160" y2="98"/><line x1="60" y1="118" x2="170" y2="118"/>
+            </g>
+            <text x="62" y="52" font-size="11" fill="#ff5a3c" font-family="sans-serif" font-weight="700">7086 清单</text>
+            <rect x="168" y="110" width="56" height="8" rx="4" fill="#d9a05b" transform="rotate(28 196 114)"/>
+          </svg>
+          <figcaption class="addr-wall__cap">地址清单第七页 · 林岸</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 故事随笔 -->
+  <section class="addr-sec" id="addrStory">
+    <div class="addr-main">
+      <div class="addr-sechead">
+        <div>
+          <h2>故事与随笔：镜头之外的现场</h2>
+          <p>编辑部与创作者的真实手记，与影像内容彼此呼应</p>
+        </div>
+        <span class="addr-sechead__tag">3 篇</span>
+      </div>
+      <div class="addr-story">
+        <article class="addr-story__item">
+          <span class="addr-story__no">01 / 拍摄手记</span>
+          <h3>在 7086 号门口等一盏灯亮起来</h3>
+          <p>那天我等了四十分钟。天色已经暗到只能靠轮廓辨认，窗里突然亮起一盏黄灯，一位老人在灯下慢慢整理纸箱。我没有立刻开机，因为那段安静本身比任何解说都重要。失效地址7086的影像，很多时候不是拍到了什么，而是忍住了什么。</p>
+        </article>
+        <article class="addr-story__item">
+          <span class="addr-story__no">02 / 编辑随笔</span>
+          <h3>为什么我们坚持核对每一块门牌</h3>
+          <p>地址一旦出错，整条记录就失去研究价值。品牌编辑部建立了四人核验小组，每条线索至少经过两次实地确认，必要时回访居民。这个过程缓慢，但它是「值得信赖」四个字的来源。也正因为如此，越来越多的城市研究者愿意引用我们的档案。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 用户评价 -->
+  <section class="addr-sec addr-sec--alt" id="addrReviews">
+    <div class="addr-main">
+      <div class="addr-sechead">
+        <div>
+          <h2>用户评价：社区的声音</h2>
+          <p>来自投稿用户、观众与合作机构的真实反馈</p>
+        </div>
+        <span class="addr-sechead__tag">口碑</span>
+      </div>
+      <div class="addr-quotes">
+        <div class="addr-quote">
+          <div class="addr-stars">★★★★★</div>
+          <p>我把外公家原来的门牌照片传上来，两周后收到了核验通过的回复，还附了一张老街区的地图。那种被认真对待的感觉，很难形容。</p>
+          <div class="addr-quote__who"><span class="addr-ava" style="background:#3c6a8a">吴</span><b>吴清</b>·投稿用户</div>
+        </div>
+        <div class="addr-quote">
+          <div class="addr-stars">★★★★★</div>
+          <p>作为一个做城市更新项目的团队，我们采购了他们的原址影像档案做展陈。素材标注清楚、授权规范，比预期省下很多沟通成本。</p>
+          <div class="addr-quote__who"><span class="addr-ava" style="background:#b0672a">秦</span><b>秦工</b>·合作机构</div>
+        </div>
+        <div class="addr-quote">
+          <div class="addr-stars">★★★★☆</div>
+          <p>视频质量稳定，节奏偏慢但很有味道。唯一的小建议是希望增加按年代筛选的功能，这样查找某个年份的地址会更方便。</p>
+          <div class="addr-quote__who"><span class="addr-ava" style="background:#5f6a5c">罗</span><b>罗青</b>·常驻观众</div>
+        </div>
+        <div class="addr-quote">
+          <div class="addr-stars">★★★★★</div>
+          <p>拓印教程那一期我照着做了一遍，真的把家里旧门牌做成了纸质档案。步骤讲得细，器材清单也很实用，没有废话。</p>
+          <div class="addr-quote__who"><span class="addr-ava" style="background:#8c6a3f">夏</span><b>夏临</b>·手作爱好者</div>
+        </div>
+        <div class="addr-quote">
+          <div class="addr-stars">★★★★★</div>
+          <p>我在这座城市住了三十年，看完《最后一天营业》才意识到自己从没认真看过一块门牌。现在走路会主动抬头了。</p>
+          <div class="addr-quote__who"><span class="addr-ava" style="background:#2a6b8a">丁</span><b>丁卫</b>·本地居民</div>
+        </div>
+        <div class="addr-quote">
+          <div class="addr-stars">★★★★☆</div>
+          <p>创作者的访谈风格很克制，没有刻意煽情。作为从事地名管理的工作人员，我很感谢有人愿意认真记录编号变化的过程。</p>
+          <div class="addr-quote__who"><span class="addr-ava" style="background:#6a7f9c">梁</span><b>梁元</b>·行业从业者</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 企业动态 -->
+  <section class="addr-sec" id="addrUpdates">
+    <div class="addr-main">
+      <div class="addr-sechead">
+        <div>
+          <h2>企业动态与官方发布</h2>
+          <p>公开我们的更新、比赛征集与合作进展</p>
+        </div>
+        <span class="addr-sechead__tag">官方发布</span>
+      </div>
+      <div class="addr-updates">
+        <div class="addr-update">
+          <div class="addr-update__date">11.18<span>2026</span></div>
+          <div>
+            <h3>《老门牌测绘手册》第 3 期发布</h3>
+            <p>新增电梯楼旧址影像 12 段，同步开放归档表格下载。</p>
+          </div>
+        </div>
+        <div class="addr-update">
+          <div class="addr-update__date">11.16<span>2026</span></div>
+          <div>
+            <h3>冬季线索征集正式开启</h3>
+            <p>预计收录 240 条新地址，报名截止 12 月 20 日。</p>
+          </div>
+        </div>
+        <div class="addr-update">
+          <div class="addr-update__date">11.12<span>2026</span></div>
+          <div>
+            <h3>创作者联盟新增 9 位影像作者</h3>
+            <p>覆盖城市探索、手作档案、人物访谈三个方向。</p>
+          </div>
+        </div>
+        <div class="addr-update">
+          <div class="addr-update__date">11.05<span>2026</span></div>
+          <div>
+            <h3>与市档案馆达成影像合作</h3>
+            <p>双方将共建失效地址7086专题影像库，首批开放 600 条记录。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 合作品牌 -->
+  <section class="addr-sec addr-sec--alt" id="addrPartners">
+    <div class="addr-main">
+      <div class="addr-sechead">
+        <div>
+          <h2>合作品牌与伙伴</h2>
+          <p>共同推动城市记忆记录与公共文化内容建设</p>
+        </div>
+      </div>
+      <div class="addr-partners">
+        <div class="addr-partner">城市档案馆</div>
+        <div class="addr-partner">南浦街道文化站</div>
+        <div class="addr-partner">旧城更新研究所</div>
+        <div class="addr-partner">影像器材实验室</div>
+        <div class="addr-partner">地方志编纂中心</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="addr-sec" id="addrFaq">
+    <div class="addr-main">
+      <div class="addr-sechead">
+        <div>
+          <h2>常见问题</h2>
+          <p>关于投稿、授权、合作与观看的说明</p>
+        </div>
+      </div>
+      <div class="addr-faq">
+        <details>
+          <summary>如何向失效地址7086提交线索？</summary>
+          <p>点击页面中的「上传我的地址线索」按钮，填写地址、现状描述与联系方式即可。我们会在 5 个工作日内完成初筛，并通过电话或邮件与您确认核验安排。</p>
+        </details>
+        <details>
+          <summary>投稿影像需要满足哪些技术要求？</summary>
+          <p>建议使用 1080P 及以上分辨率，画面稳定、光线充足。若涉及居民访谈，请提前取得口头或书面同意。归档时请尽量保留原始文件，方便我们做二次核验。</p>
+        </details>
+        <details>
+          <summary>我的作品会如何被使用？</summary>
+          <p>所有作品默认仅在品牌官方网站及相关官方账号展示，署名归作者所有。若涉及商业合作或机构授权，我们会单独沟通并签署授权协议，作者可选择是否参与。</p>
+        </details>
+        <details>
+          <summary>品牌是否接受机构定制拍摄？</summary>
+          <p>接受。我们为城市更新项目、文化展陈、地方志部门提供定制影像服务，包含前期勘景、脚本策划、拍摄与后期归档。可通过联系表单说明项目背景与时间要求。</p>
+        </details>
+        <details>
+          <summary>为什么有些地址显示「待核验」？</summary>
+          <p>地址信息来自用户投稿，需经实地核验后才能进入正式档案。核验周期受地理位置、访问许可与天气影响，通常为 2 至 4 周。</p>
+        </details>
+        <details>
+          <summary>能否下载站内影像素材？</summary>
+          <p>公开影像支持在线浏览，高清原片下载需获得作者授权。用于教学、研究等非商业场景时，可提交申请并注明出处。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系与投稿 -->
+  <section class="addr-sec addr-sec--dark" id="addrContact">
+    <div class="addr-main">
+      <div class="addr-contact">
+        <div>
+          <h2>与我们联系，一起记录下一块门牌</h2>
+          <p>无论你是一位影像作者、一位居民，还是一家关注城市记忆的机构，都欢迎加入失效地址7086的内容生态。我们相信，持续的记录本身就是一种力量。</p>
+          <div class="addr-contact__info">
+            <div><span>投稿邮箱</span>archive@addr7086.example</div>
+            <div><span>合作咨询</span>brand@addr7086.example</div>
+            <div><span>办公地址</span>南浦路文化站三层 · 影像档案室</div>
+            <div><span>开放时间</span>周一至周五 10:00 - 18:00</div>
+          </div>
+        </div>
+        <div class="addr-contact__box" id="addrSubmit">
+          <h3>提交你的地址线索</h3>
+          <p>留下联系方式，编辑团队会尽快与你确认核验时间。</p>
+          <form id="addrLeadForm">
+            <input type="text" placeholder="你的称呼" required aria-label="你的称呼">
+            <input type="text" placeholder="失效地址或线索描述" required aria-label="线索描述">
+            <input type="email" placeholder="联系邮箱" required aria-label="联系邮箱">
+            <button type="submit" class="addr-btn addr-btn--solid">提交线索</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="addr-footer">
+  <div class="addr-footer__in">
+    <div class="addr-footer__top">
+      <div class="addr-footer__brand">
+        <b>失效地址7086</b>
+        <p>失效地址7086官方网站，专注城市地址变迁的影像品牌。企业持续运营，坚持以原创、正版、高清为内容标准，与创作者社区共同构建值得信赖的城市记忆内容生态。</p>
+      </div>
+      <div>
+        <h4>内容</h4>
+        <ul>
+          <li><a href="#addrFocus">焦点影像</a></li>
+          <li><a href="#addrFlow">热门视频流</a></li>
+          <li><a href="#addrTopics">专题企划</a></li>
+          <li><a href="#addrWall">影像墙</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>社区</h4>
+        <ul>
+          <li><a href="#addrCreators">创作者联盟</a></li>
+          <li><a href="#addrReviews">用户评价</a></li>
+          <li><a href="#addrUpdates">企业动态</a></li>
+          <li><a href="#addrFaq">帮助中心</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="#addrAbout">品牌故事</a></li>
+          <li><a href="#addrPartners">合作伙伴</a></li>
+          <li><a href="#addrContact">联系我们</a></li>
+          <li><a href="#addrSubmit">线索投稿</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="addr-footer__bar">
+      <span>© 2026 失效地址7086 品牌版权所有 · 持续运营中</span>
+      <span>影像档案编号体系 · addr-7086 · 保留所有权利</span>
+    </div>
+  </div>
+</footer>
+
+<button class="addr-top" id="addrTopBtn" aria-label="回到顶部"></button>
+
+<div class="addr-toast" id="addrToast" role="status" aria-live="polite"></div>
+
+<div class="addr-modal" id="addrModal" role="dialog" aria-modal="true" aria-labelledby="addrModalTitle">
+  <div class="addr-modal__box">
+    <button class="addr-modal__close" id="addrModalClose" aria-label="关闭">×</button>
+    <h3 id="addrModalTitle">分享</h3>
+    <p id="addrModalDesc">把这条失效地址7086的影像分享给更多朋友。</p>
+    <div id="addrModalBody"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* 公告条轮播 */
+  var items = Array.prototype.slice.call(document.querySelectorAll('.addr-announce__item'));
+  var ai = 0;
+  if (items.length > 1) {
+    setInterval(function(){
+      items[ai].classList.remove('is-on');
+      ai = (ai + 1) % items.length;
+      items[ai].classList.add('is-on');
+    }, 4200);
+  }
+
+  /* 移动端导航 */
+  var burger = document.getElementById('addrBurger');
+  var nav = document.getElementById('addrNav');
+  burger.addEventListener('click', function(){
+    nav.classList.toggle('is-on');
+  });
+  nav.addEventListener('click', function(e){
+    if (e.target.tagName === 'A') nav.classList.remove('is-on');
+  });
+
+  /* 数字滚动 */
+  function runCount(el){
+    var target = parseInt(el.getAttribute('data-addr-count'), 10) || 0;
+    var start = null, dur = 1300;
+    function step(ts){
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.floor(eased * target).toLocaleString('zh-CN');
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = target.toLocaleString('zh-CN');
+    }
+    requestAnimationFrame(step);
+  }
+  var counters = document.querySelectorAll('[data-addr-count]');
+  if ('IntersectionObserver' in window) {
+    var co = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { runCount(en.target); co.unobserve(en.target); }
+      });
+    }, {threshold: .5});
+    counters.forEach(function(c){ co.observe(c); });
+  } else {
+    counters.forEach(runCount);
+  }
+
+  /* Toast */
+  var toast = document.getElementById('addrToast');
+  var toastTimer = null;
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add('is-on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove('is-on'); }, 2200);
+  }
+
+  /* 搜索 */
+  var searchForm = document.getElementById('addrSearchForm');
+  var searchInput = document.getElementById('addrSearchInput');
+  var searchBack = document.getElementById('addrSearchBack');
+  searchForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    var kw = searchInput.value.trim();
+    if (!kw) {
+      searchBack.textContent = '请输入关键词，例如「7086」「门牌」「工业带」';
+      searchBack.classList.add('is-on');
+      return;
+    }
+    var hit = kw.indexOf('7086') > -1 || kw.indexOf('门牌') > -1 || kw.indexOf('地址') > -1 ||
+              kw.indexOf('工业') > -1 || kw.indexOf('搬迁') > -1 || kw.indexOf('影像') > -1;
+    if (hit) {
+      searchBack.textContent = '已为你定位到相关影像：「' + kw + '」相关记录共 26 条，可浏览焦点影像与影像墙。';
+      searchBack.classList.add('is-on');
+      document.getElementById('addrFocus').scrollIntoView({behavior:'smooth'});
+    } else {
+      searchBack.textContent = '暂未找到与「' + kw + '」直接匹配的地址，可尝试「7086」「老门牌」「车站」等关键词。';
+      searchBack.classList.add('is-on');
+    }
+  });
+
+  /* 点赞 / 收藏 */
+  document.addEventListener('click', function(e){
+    var likeBtn = e.target.closest('[data-addr-like]');
+    if (likeBtn) {
+      var b = likeBtn.querySelector('b');
+      var n = parseInt(b.textContent.replace(/,/g,''), 10) || 0;
+      if (likeBtn.classList.contains('is-liked')) {
+        likeBtn.classList.remove('is-liked');
+        likeBtn.firstChild.nodeValue = '♡ ';
+        b.textContent = (n - 1).toLocaleString('zh-CN');
+        showToast('已取消点赞');
+      } else {
+        likeBtn.classList.add('is-liked');
+        likeBtn.firstChild.nodeValue = '♥ ';
+        b.textContent = (n + 1).toLocaleString('zh-CN');
+        showToast('已点赞，感谢你的支持');
+      }
+      return;
+    }
+    var saveBtn = e.target.closest('[data-addr-save]');
+    if (saveBtn) {
+      saveBtn.classList.toggle('is-saved');
+      if (saveBtn.classList.contains('is-saved')) {
+        saveBtn.textContent = '★ 已收藏';
+        showToast('已加入收藏夹');
+      } else {
+        saveBtn.textContent = '☆ 收藏';
+        showToast('已取消收藏');
+      }
+      return;
+    }
+    var shareBtn = e.target.closest('[data-addr-share]');
+    if (shareBtn) {
+      openModal('分享这条影像', '把这条失效地址7086的影像分享给更多朋友。',
+        '<div class="addr-share">' +
+        '<button data-addr-copy>复制链接</button>' +
+        '<button data-addr-toastbtn="微信分享已生成，请前往微信粘贴">微信</button>' +
+        '<button data-addr-toastbtn="微博分享已生成">微博</button>' +
+        '</div>');
+      return;
+    }
+    var copyBtn = e.target.closest('[data-addr-copy]');
+    if (copyBtn) {
+      copyPageLink();
+      return;
+    }
+    var toastBtn = e.target.closest('[data-addr-toastbtn]');
+    if (toastBtn) {
+      showToast(toastBtn.getAttribute('data-addr-toastbtn'));
+      closeModal();
+      return;
+    }
+    var modalTrigger = e.target.closest('[data-addr-modal]');
+    if (modalTrigger) {
+      e.preventDefault();
+      openModal('上传地址线索', '请填写地址、现状与联系方式，编辑团队会在 5 个工作日内与你确认核验安排。',
+        '<textarea placeholder="例如：南浦路 7086 号，已围挡，原为杂货铺，门牌仍在…"></textarea>' +
+        '<div class="addr-modal__acts"><button class="addr-btn addr-btn--ghost" data-addr-close>取消</button>' +
+        '<button class="addr-btn addr-btn--solid" data-addr-toastbtn="线索已提交，感谢你的参与">提交</button></div>');
+      return;
+    }
+    if (e.target.closest('[data-addr-close]')) { closeModal(); return; }
+  });
+
+  function copyPageLink(){
+    var url = '失效地址7086 品牌影像档案';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function(){
+        showToast('链接已复制，可粘贴分享');
+      }).catch(function(){
+        showToast('复制失败，请手动分享');
+      });
+    } else {
+      showToast('链接已生成，可手动分享');
+    }
+  }
+
+  /* 弹窗 */
+  var modal = document.getElementById('addrModal');
+  var modalTitle = document.getElementById('addrModalTitle');
+  var modalDesc = document.getElementById('addrModalDesc');
+  var modalBody = document.getElementById('addrModalBody');
+  function openModal(title, desc, body){
+    modalTitle.textContent = title;
+    modalDesc.textContent = desc;
+    modalBody.innerHTML = body;
+    modal.classList.add('is-on');
+  }
+  function closeModal(){ modal.classList.remove('is-on'); }
+  document.getElementById('addrModalClose').addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+
+  /* 线索表单 */
+  document.getElementById('addrLeadForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    this.reset();
+    showToast('线索已提交，编辑团队会尽快与你联系');
+  });
+
+  /* 回到顶部 */
+  var topBtn = document.getElementById('addrTopBtn');
+  window.addEventListener('scroll', function(){
+    if (window.scrollY > 520) topBtn.classList.add('is-on');
+    else topBtn.classList.remove('is-on');
+  });
+  topBtn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+})();
+</script>
+</body>
+  </html>
